@@ -12,5 +12,12 @@ RSpec.describe "reading_timer method" do
         end
     end
 end
-        
+
+RSpec.describe "reading_timer method" do
+    context "when given anything other than a string" do
+        it "fails" do
+            expect { reading_timer() }.to raise_error "Please, give me a string!"
+        end
+    end
+end
 
