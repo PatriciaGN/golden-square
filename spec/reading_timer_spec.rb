@@ -21,3 +21,10 @@ RSpec.describe "reading_timer method" do
     end
 end
 
+RSpec.describe "reading_timer method" do
+    it "returns 0.0666 when given 'Hello world'" do
+        result = reading_timer("Hello world")
+        expect(result).to eq 0.06
+    end
+end
+
