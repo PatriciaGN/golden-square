@@ -3,6 +3,8 @@ def grammar_checker(text)
         fail "Please, give me some text!"
     elsif ! text.is_a? String
         fail "Please, give me a string!"
-    end 
+    else
+        return false
+    end
 end
 

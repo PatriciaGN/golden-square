@@ -9,7 +9,7 @@ require "grammar_checker"
 # grammar_checker(“PROGRAMING IS FUN!” => true
 # grammar_checker(“For example:”) => false
 
-RSpec.describe "grammar_checker" do
+RSpec.describe "grammar_checker method" do
     context "when given an empty string" do
         it "fails" do
             expect { grammar_checker("")}.to raise_error "Please, give me some text!"
@@ -17,10 +17,17 @@ RSpec.describe "grammar_checker" do
     end
 end
 
-RSpec.describe "grammar_checker" do
+RSpec.describe "grammar_checker method" do
     context "when given something an integer" do
         it "fails" do
             expect { grammar_checker(6)}.to raise_error "Please, give me a string!"
         end
+    end
+end
+
+RSpec.describe "grammar_checker method" do
+    it "returns false when given the string 'Hello world'" do
+        result = grammar_checker("Hello world")
+        expect(result).to eq false
     end
 end
