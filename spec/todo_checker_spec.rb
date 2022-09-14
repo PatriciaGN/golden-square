@@ -25,3 +25,10 @@ RSpec.describe "todo_checker method" do
         end
     end
 end
+
+RSpec.describe "todo_checker method" do
+    it "returns false when given 'This string'" do
+        result = todo_checker("This string")
+        expect(result).to eq false
+    end
+end
