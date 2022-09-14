@@ -41,3 +41,10 @@ RSpec.describe "reading_timer method" do
         expect(result).to eq 2
     end
 end
+
+RSpec.describe "reading_timer method" do
+    it "returns 4 when given a 800 words string" do
+        result = reading_timer("cat " * 800)
+        expect(result).to eq 4
+    end
+end

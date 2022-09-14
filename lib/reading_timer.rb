@@ -9,14 +9,6 @@
 def reading_timer(text)
     fail "Please, give me a string!" unless text.is_a? String 
     words = text.split(" ").count
-    puts words
-    if words == 0
-        return 0
-    elsif words <= 200
-        return 1
-    elsif words > 200
-       return 2
-    end
+    return (words / 200.0).ceil
 end
 
-reading_timer("Hey " * 300)
