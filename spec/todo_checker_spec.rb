@@ -46,3 +46,24 @@ RSpec.describe "todo_checker method" do
         expect(result).to eq true
     end
 end
+
+RSpec.describe "todo_checker method" do
+    it "returns false when given 'This string has a lowercase todo'" do
+        result = todo_checker("This string has a lowercase todo")
+        expect(result).to eq false
+    end
+end
+
+RSpec.describe "todo_checker method" do
+    it "returns false when given 'UPPERCASE STRING'" do
+        result = todo_checker("UPPERCASE STRING")
+        expect(result).to eq false
+    end
+end
+
+RSpec.describe "todo_checker method" do
+    it "returns true when given 'UPPERCASE TODO'" do
+        result = todo_checker("UPPERCASE TODO")
+        expect(result).to eq true
+    end
+end
