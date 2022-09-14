@@ -4,20 +4,12 @@
 # reading_timer(“”) => 0
 # reading_timer(6) => throws an error
 # readint_timer(nil) => throws an error
-
+require "reading_timer"
 
 RSpec.describe "reading_timer method" do
     context "when given anything other than a string" do
         it "fails" do
             expect { reading_timer(7) }.to raise_error "Please, give me a string!"
-        end
-    end
-end
-
-RSpec.describe "reading_timer method" do
-    context "when given anything other than a string" do
-        it "fails" do
-            expect { reading_timer() }.to raise_error "Please, give me a string!"
         end
     end
 end
