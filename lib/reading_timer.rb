@@ -8,9 +8,15 @@
 
 def reading_timer(text)
     fail "Please, give me a string!" unless text.is_a? String 
-    if text.split(" ").count == 0
+    words = text.split(" ").count
+    puts words
+    if words == 0
         return 0
-    else 
+    elsif words <= 200
         return 1
+    elsif words > 200
+       return 2
     end
 end
+
+reading_timer("Hey " * 300)
