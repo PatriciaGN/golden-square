@@ -38,3 +38,31 @@ RSpec.describe "grammar_checker method" do
         expect(result).to eq true
     end
 end
+
+RSpec.describe "grammar_checker method" do
+    it "returns false when given the string 'dogs are also fine.'" do
+        result = grammar_checker("dogs are also fine.")
+        expect(result).to eq false
+    end
+end
+
+RSpec.describe "grammar_checker method" do
+    it "returns true when given the string 'MMmmmm, maybe?'" do
+        result = grammar_checker("MMmmmm, maybe?")
+        expect(result).to eq true
+    end
+end
+
+RSpec.describe "grammar_checker method" do
+    it "returns true when given the string 'PROGRAMING IS FUN!'" do
+        result = grammar_checker("PROGRAMING IS FUN!")
+        expect(result).to eq true
+    end
+end
+
+RSpec.describe "grammar_checker method" do
+    it "returns false when given the string 'For example:'" do
+        result = grammar_checker("For example:")
+        expect(result).to eq false
+    end
+end
