@@ -1,6 +1,7 @@
-# reading_timer(“Hello world”) => 0.0666
-# reading_timer(“"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.”) => 2.299
-# reading_timer(“”) => 0.0
+# reading_timer(one_word) => 1
+# reading_timer(ten_words) => 1
+# reading_timer(300_words) => 2 
+# reading_timer(“”) => 0
 # reading_timer(6) => throws an error
 # readint_timer(nil) => throws an error
 
@@ -22,9 +23,16 @@ RSpec.describe "reading_timer method" do
 end
 
 RSpec.describe "reading_timer method" do
-    it "returns 0.0666 when given 'Hello world'" do
-        result = reading_timer("Hello world")
-        expect(result).to eq 0.06
+    it "returns 0 when given an empty string" do
+        result = reading_timer("")
+        expect(result).to eq 0
+    end
+end
+
+RSpec.describe "reading_timer method" do
+    it "returns 1 when given a one word string" do
+        result = reading_timer(one_word)
+        expect(result).to eq 1
     end
 end
 
