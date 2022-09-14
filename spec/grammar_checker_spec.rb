@@ -31,3 +31,10 @@ RSpec.describe "grammar_checker method" do
         expect(result).to eq false
     end
 end
+
+RSpec.describe "grammar_checker method" do
+    it "returns true when given the string 'Cats are cool.'" do
+        result = grammar_checker("Cats are cool.")
+        expect(result).to eq true
+    end
+end
