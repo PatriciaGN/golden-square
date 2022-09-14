@@ -1,5 +1,8 @@
 def grammar_checker(text)
     if text == ""
         fail "Please, give me some text!"
-    end
+    elsif ! text.is_a? String
+        fail "Please, give me a string!"
+    end 
 end
+

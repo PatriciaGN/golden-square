@@ -16,3 +16,11 @@ RSpec.describe "grammar_checker" do
         end
     end
 end
+
+RSpec.describe "grammar_checker" do
+    context "when given something an integer" do
+        it "fails" do
+            expect { grammar_checker(6)}.to raise_error "Please, give me a string!"
+        end
+    end
+end
