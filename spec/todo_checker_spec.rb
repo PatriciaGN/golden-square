@@ -32,3 +32,17 @@ RSpec.describe "todo_checker method" do
         expect(result).to eq false
     end
 end
+
+RSpec.describe "todo_checker method" do
+    it "returns true when given 'Another string TODO'" do
+        result = todo_checker("Another string TODO")
+        expect(result).to eq true
+    end
+end
+
+RSpec.describe "todo_checker method" do
+    it "returns true when given 'So many TODO TODO in this string'" do
+        result = todo_checker("So many TODO TODO in this string")
+        expect(result).to eq true
+    end
+end
