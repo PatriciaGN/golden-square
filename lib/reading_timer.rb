@@ -8,5 +8,9 @@
 
 def reading_timer(text)
     fail "Please, give me a string!" unless text.is_a? String 
-    return 0
+    if text.split(" ").count == 0
+        return 0
+    else 
+        return 1
+    end
 end

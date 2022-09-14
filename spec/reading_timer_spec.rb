@@ -23,8 +23,14 @@ end
 
 RSpec.describe "reading_timer method" do
     it "returns 1 when given a one word string" do
-        result = reading_timer(one_word)
+        result = reading_timer("one")
         expect(result).to eq 1
     end
 end
 
+RSpec.describe "reading_timer method" do
+    it "returns 1 when given a two word string" do
+        result = reading_timer("cat dog")
+        expect(result).to eq 1
+    end
+end
