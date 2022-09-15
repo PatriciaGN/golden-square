@@ -23,5 +23,11 @@ RSpec.describe DiaryEntry do
       end
     end
 
+    describe "#reading_time" do
+       it "it returns the number of minutes it takes to read a text rounded up" do
+          my_diary = DiaryEntry.new(nil, "")
+          expect(my_diary.reading_time(200)).to eq 0
+       end
+    end
 
 end

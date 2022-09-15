@@ -18,7 +18,8 @@ class DiaryEntry
     end
   
     def reading_time(wpm) # wpm is an integer representing the number of words the
-                          # user can read per minute
+      total_words = count_words 
+      total_words / wpm                # user can read per minute words / reading_time(minutes) = wpm
       # Returns an integer representing an estimate of the reading time in minutes
       # for the contents at the given wpm.
     end
