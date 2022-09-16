@@ -1,0 +1,96 @@
+1. Describe the Problem
+As a user
+I want to be able to record text into my diary.
+Get an estimation of how long it takes to read an entry.
+Get an instance of diary entry representing the entry that is closest to, but not over, the length that the user could read in the minutes they have available given their reading speed.
+
+2. Design the Class Interface
+Name: Diary
+Initialize takes no parameters and creates an empty array called "@entries"
+
+**Methods**
+* add(entry): Takes a string (entry) and adds it to our @entries array. Doesn't return anything.
+
+* all: Doesn't take any arguments, returns @entries. No side effects.
+
+* count_words: Doesn't take any arguments, returns an integer (total_words) which is the number of words inside an entry.
+
+* reading_time(wpm): wpm - integer representing the number of words a user can read in a minute.
+Returns an integer which equals the minutes the user will take to read all the entries in the diary (rounded up).
+
+* find_best_entry_for_reading_time(wpm, minutes):
+wpm - integer representing the number of words a user can read in a minute.
+minutes - is an integer representing the number of minutes the user
+ has to read.
+ It returns an instance of diary entry representing the entry that is closest to, but not over, the length that the user could read in the minutes they have available given their reading speed.
+
+3. Create Examples as Tests
+* Initialize
+  it "Creates the variable @entries which equals an empty array" do
+    new_entry1 = Diary.new
+    new_entry1.all should equal an empty array.
+
+* add(entry) 
+  it "adds an entry to the @entries array"
+  new_entry1 = Diary.new
+  new_entry1.add("Entry one")
+  new_entry1.all should equal "Entry one"
+
+  it "adds an entry to the @entries array"
+  new_entry1 = Diary.new
+  new_entry1.add("Entry one")
+  new_entry1.add("Entry two")
+  new_entry1.all should equal ["Entry one", "Entry two"]
+
+* all
+Tested on the previous tests
+
+* count_words
+  it "Returns zero when no diary entried"
+  new_entry1 = Diary.new
+  expect(new_entry1.count_words).to eq 0
+
+  it "Returns the number of words one diary entries"
+  new_entry1 = Diary.new
+  new_entry1.add("Entry one")
+  expect(new_entry1.count_words).to eq 2
+
+  it "Returns the number of words in all diary entries"
+  new_entry1 = Diary.new
+  new_entry1.add("Entry one")
+  new_entry1.add("Entry two")
+  expect(new_entry1.count_words).to eq 4
+
+* find_best_entry_for_reading_time(wpm, minutes)
+  it "fails when there are no entries in the diary"
+  new_entry1 = Diary.new
+  expect{ new_entry1.find_best_entry_for_reading_time(1, 1) }.to raise_error "No entries found"
+
+  it "fails when all entries are too long"
+  new_entry1 = Diary.new
+  new_entry1.add("Entry one")
+  new_entry1.add("Entry two")
+  new_entry1.add("Entry three")
+  expect{ new_entry1.find_best_entry_for_reading_time(1, 1) }.to raise_error "All entries are too long to read in the given time."
+
+  it "Returns the instance of diary entry of the entry that is equal or closest below to the amount of words the user can read"
+  new_entry1 = Diary.new
+  new_entry1.add("Entry")
+  new_entry1.add("Entry two")
+  expect(new_entry1.find_best_entry_for_reading_time(1, 1)).to eq Object for "Entry"
+
+  it "When there are two entries with same amount of words that the user can read, it returns one of them"
+  new_entry1 = Diary.new
+  new_entry1.add("Entry")
+  new_entry1.add("Entry one")
+  new_entry1.add("Entry two")
+  expect(new_entry1.find_best_entry_for_reading_time(2, 1)).to eq Object for "Entry two" or "Entry one"
+
+
+
+4. Implement the Behaviour
+For each example you create as a test, implement the behaviour that allows the class to behave according to your example.
+At this point you may wish to apply small-step test-driving to manage the complexity. This means you only write the minimum lines of the example to get the test to fail (red), then make it pass (green) and refactor, before adding another line to the test until it fails, then continue.
+Then return to step 3 until you have addressed the problem you were given. You may also need to revise your design, for example if you realise you made a mistake earlier.
+Copy and fill out this template for each of the below exercises.
+
