@@ -22,6 +22,8 @@ class DiaryEntry
                           # the number of words the user can read per minute
       # Returns an integer representing an estimate of the reading time in minutes
       # for the contents at the given wpm.
+      fail "The reading speed is too low!" if wpm < 1
+      (count_words / wpm.to_f).ceil 
     end
   
     def reading_chunk(wpm, minutes) # `wpm` is an integer representing the number

@@ -34,4 +34,31 @@ RSpec.describe DiaryEntry do
           expect(diary_entry.count_words).to eq 4
         end
       end
+
+      describe "#reading_time" do
+        it "raises an error if wpm lower than 1" do
+          new_entry = DiaryEntry.new("my_title", "My contents")
+          expect { new_entry.reading_time(0) }.to raise_error "The reading speed is too low!"
+        end
+
+        it "it returns zero when given an empty string" do
+           new_entry = DiaryEntry.new(nil, "")
+           expect(new_entry.reading_time(200)).to eq 0
+        end
+ 
+        it "it returns the number of minutes it takes to read a text rounded up" do
+           new_entry = DiaryEntry.new(nil, "one")
+           expect(new_entry.reading_time(200)).to eq 1
+        end
+ 
+        it "it returns the number of minutes it takes to read a text rounded up" do
+           new_entry = DiaryEntry.new(nil, "one " * 200)
+           expect(new_entry.reading_time(200)).to eq 1
+        end
+ 
+        it "it returns the number of minutes it takes to read a text rounded up" do
+           my_diary = DiaryEntry.new(nil, "one " * 300)
+           expect(my_diary.reading_time(200)).to eq 2
+        end
+     end
 end
