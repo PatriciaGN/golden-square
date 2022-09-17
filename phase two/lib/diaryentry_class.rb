@@ -2,7 +2,8 @@
 # File: lib/diary_entry.rb
 class DiaryEntry
     def initialize(title, contents) # title, contents are strings
-      # ...
+      @title = title
+      @contents = contents
     end
   
     def title
