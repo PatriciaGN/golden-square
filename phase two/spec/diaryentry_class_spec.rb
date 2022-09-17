@@ -61,4 +61,28 @@ RSpec.describe DiaryEntry do
            expect(my_diary.reading_time(200)).to eq 2
         end
      end
+
+     describe "#reading_chunk" do
+        it "returns a string with the number of words a user can read read in a given time" do
+          new_entry = DiaryEntry.new(nil, "one two three four five six seven eight nine ten") 
+          expect(new_entry.reading_chunk(2, 3)).to eq "one two three four five six"
+        end
+  
+        it "returns the text the user is able to read starting from the previous chunk" do
+          new_entry = DiaryEntry.new(nil, "one two three four five six seven eight nine ten")
+          new_entry.reading_chunk(2, 2) 
+          expect(new_entry.reading_chunk(2, 2)).to eq "five six seven eight"
+        end
+  
+        it "stops returning words when it gets to the end of the string" do
+          new_entry = DiaryEntry.new(nil, "one two three four five six seven eight nine ten")
+          expect(new_entry.reading_chunk(5, 3)).to eq "one two three four five six seven eight nine ten"
+        end
+  
+        it "starts returning the contents again after it has gotten to the end when called several times" do
+          new_entry = DiaryEntry.new(nil, "one two three four five six seven eight nine ten")
+          new_entry.reading_chunk(5, 3)
+          expect(new_entry.reading_chunk(1, 2)).to eq "one two"
+        end
+    end
 end

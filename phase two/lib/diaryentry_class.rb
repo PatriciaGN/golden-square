@@ -4,6 +4,7 @@ class DiaryEntry
     def initialize(title, contents) # title, contents are strings
       @title = title
       @contents = contents
+      @counter = 0
     end
   
     def title
@@ -35,5 +36,14 @@ class DiaryEntry
       # If called again, `reading_chunk` should return the next chunk, skipping
       # what has already been read, until the contents is fully read.
       # The next call after that it should restart from the beginning.
+      total_words_readable = wpm * minutes
+      last_word = @counter + total_words_readable
+      chunk = @contents.split[@counter...last_word]
+      if last_word >= count_words
+          @counter = 0
+      else
+          @counter = last_word
+      end
+      return chunk.join(" ")
     end
   end
