@@ -7,11 +7,11 @@ class DiaryEntry
     end
   
     def title
-      # Returns the title as a string
+      returns @title
     end
   
     def contents
-      # Returns the contents as a string
+      returns @content
     end
   
     def count_words
