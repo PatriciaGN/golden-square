@@ -11,5 +11,10 @@ RSpec.describe DiaryEntry do
             new_entry = DiaryEntry.new("my title", "my contents")
             expect(new_entry.title).to eq "my title"
         end
+
+        it "returns the content as a string" do
+            new_entry = DiaryEntry.new("my title", "my contents")
+            expect(new_entry.contents).to eq "my contents"
+        end
     end
 end

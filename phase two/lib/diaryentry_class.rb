@@ -11,7 +11,7 @@ class DiaryEntry
     end
   
     def contents
-       @content
+       @contents
     end
   
     def count_words
