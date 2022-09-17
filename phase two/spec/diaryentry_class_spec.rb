@@ -2,14 +2,14 @@ require_relative "../lib/diaryentry_class.rb"
 require_relative "../lib/diary_class.rb"
 
 RSpec.describe DiaryEntry do
-    it "#Initialize + #title + #contents" do
+    describe "#initialize + #title + #contents" do
         it "Constructs the variables @title and @contents" do
-            new_entry = DiaryEntry.new("my_title", "my_contents")
+            new_entry = DiaryEntry.new("my title", "my contents")
         end
 
-        it "Returns the title" do
-            new_entry = DiaryEntry.new("my_title", "my_contents")
-            expect (new_entry.title).to eq "my_title"
+        it "returns the title as a string" do
+            new_entry = DiaryEntry.new("my title", "my contents")
+            expect(new_entry.title).to eq "my title"
         end
     end
 end

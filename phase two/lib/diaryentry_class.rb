@@ -1,5 +1,5 @@
 
-# File: lib/diary_entry.rb
+
 class DiaryEntry
     def initialize(title, contents) # title, contents are strings
       @title = title
@@ -7,11 +7,11 @@ class DiaryEntry
     end
   
     def title
-      returns @title
+       @title
     end
   
     def contents
-      returns @content
+       @content
     end
   
     def count_words
