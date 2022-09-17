@@ -9,11 +9,13 @@ Name: Diary
 Initialize takes no parameters and creates an empty array called "@entries"
 
 **Methods**
-* add(entry): Takes a string (entry) and adds it to our @entries array. Doesn't return anything.
+* initialize: creates an variable (@entries) that contains an empty array.
 
-* all: Doesn't take any arguments, returns @entries. No side effects.
+* add(entry): Takes a instance of the class DiaryEntry (entry) and adds it to our @entries array. Doesn't return anything.
 
-* count_words: Doesn't take any arguments, returns an integer (total_words) which is the number of words inside an entry.
+* all: Doesn't take any arguments, returns a list of instances of DiaryEntry. No side effects.
+
+* count_words: Doesn't take any arguments, returns an integer (total_words) which is the number of words inside all entries in our diary (needs to use count_words method from DiaryEntry).
 
 * reading_time(wpm): wpm - integer representing the number of words a user can read in a minute.
 Returns an integer which equals the minutes the user will take to read all the entries in the diary (rounded up).
@@ -26,65 +28,21 @@ minutes - is an integer representing the number of minutes the user
 
 3. Create Examples as Tests
 * Initialize
-  it "Creates the variable @entries which equals an empty array" do
+  it "Constructs the variable @entries which equals an empty array" do
     new_entry1 = Diary.new
-    new_entry1.all should equal an empty array.
+    # new_entry1.all should equal an empty array.
 
 * add(entry) 
-  it "adds an entry to the @entries array"
-  new_entry1 = Diary.new
-  new_entry1.add("Entry one")
-  new_entry1.all should equal "Entry one"
-
-  it "adds an entry to the @entries array"
-  new_entry1 = Diary.new
-  new_entry1.add("Entry one")
-  new_entry1.add("Entry two")
-  new_entry1.all should equal ["Entry one", "Entry two"]
+ In integration recipe
 
 * all
 Tested on the previous tests
 
 * count_words
-  it "Returns zero when no diary entried"
-  new_entry1 = Diary.new
-  expect(new_entry1.count_words).to eq 0
-
-  it "Returns the number of words one diary entries"
-  new_entry1 = Diary.new
-  new_entry1.add("Entry one")
-  expect(new_entry1.count_words).to eq 2
-
-  it "Returns the number of words in all diary entries"
-  new_entry1 = Diary.new
-  new_entry1.add("Entry one")
-  new_entry1.add("Entry two")
-  expect(new_entry1.count_words).to eq 4
+  In integration recipe
 
 * find_best_entry_for_reading_time(wpm, minutes)
-  it "fails when there are no entries in the diary"
-  new_entry1 = Diary.new
-  expect{ new_entry1.find_best_entry_for_reading_time(1, 1) }.to raise_error "No entries found"
-
-  it "fails when all entries are too long"
-  new_entry1 = Diary.new
-  new_entry1.add("Entry one")
-  new_entry1.add("Entry two")
-  new_entry1.add("Entry three")
-  expect{ new_entry1.find_best_entry_for_reading_time(1, 1) }.to raise_error "All entries are too long to read in the given time."
-
-  it "Returns the instance of diary entry of the entry that is equal or closest below to the amount of words the user can read"
-  new_entry1 = Diary.new
-  new_entry1.add("Entry")
-  new_entry1.add("Entry two")
-  expect(new_entry1.find_best_entry_for_reading_time(1, 1)).to eq Object for "Entry"
-
-  it "When there are two entries with same amount of words that the user can read, it returns one of them"
-  new_entry1 = Diary.new
-  new_entry1.add("Entry")
-  new_entry1.add("Entry one")
-  new_entry1.add("Entry two")
-  expect(new_entry1.find_best_entry_for_reading_time(2, 1)).to eq Object for "Entry two" or "Entry one"
+  In integration recipe
 
 
 

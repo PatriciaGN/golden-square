@@ -29,9 +29,11 @@ Returns an integer which equals the minutes the user will take to read all the e
 
 3. Create Examples as Tests
 * Initialize + title + contents
+  it "Constructs the variarbles @title and @contents" do
+    diary_entry = DiaryEntry.new("my_title", "my contents")
+
   it "Creates the variables @title and @contents and displays them" do
-    diary_entry = DiaryEntry.new
-    diary_entry("my_title", "my contents")
+    diary_entry = DiaryEntry.new("my_title", "my contents")
     diary_entry.title should equal "my_title"
     diary_entry.contents should equal "my contents"
 
