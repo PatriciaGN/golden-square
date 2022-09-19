@@ -42,5 +42,15 @@ class Diary
       # Returns an instance of diary entry representing the entry that is closest 
       # to, but not over, the length that the user could read in the minutes they
       # have available given their reading speed.
+      fail "There are no entries to read" if @all_entries.empty?
+      words_able_to_read = wpm * minutes
+      something_readable = false
+      @all_entries.each do |entry|
+        if words_able_to_read >= entry.count_words 
+          something_readable = true
+          return entry 
+        end
+      end
+      fail "All entries are too long to read right now" if something_readable == false
     end
   end

@@ -90,4 +90,35 @@ RSpec.describe Diary do
       end
     end
 
+    describe "#find_best_entry_for_reading_time(wpm, minutes)" do
+      it "fails when there are no entries" do
+        my_diary = Diary.new
+        expect { my_diary.find_best_entry_for_reading_time(1, 1) }.to raise_error "There are no entries to read"
+      end
+
+      it "fails when no suitable entries for the given time" do
+        diary_entry1 = DiaryEntry.new("entry_one", "one two three")
+        diary_entry2 = DiaryEntry.new("entry_two", "four five six")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        my_diary.add(diary_entry2)
+        expect { my_diary.find_best_entry_for_reading_time(1, 1) }.to raise_error "All entries are too long to read right now"
+      end
+
+      it "returns an entry the user can read in the given time" do
+        diary_entry1 = DiaryEntry.new("entry_one", "one two three")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        expect(my_diary.find_best_entry_for_reading_time(1, 3)).to eq diary_entry1
+      end
+
+      it "returns an entry the user can read in the given time if there are several suitable entries" do
+        diary_entry1 = DiaryEntry.new("entry_one", "one two three")
+        diary_entry2 = DiaryEntry.new("entry_two", "four five six")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        my_diary.add(diary_entry2)
+        expect(my_diary.find_best_entry_for_reading_time(1, 3)).to eq diary_entry1
+      end
+    end
 end
