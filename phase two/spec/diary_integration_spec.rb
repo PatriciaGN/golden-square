@@ -1,7 +1,7 @@
 require_relative "../lib/diary_class.rb"
 require_relative "../lib/diaryentry_class.rb"
 
-RSpec.describe Diary do
+RSpec.describe "Diary integration" do
     describe "#add(entry) and #all" do
         it "adds an entrie to @all_entries" do
             my_diary = Diary.new
