@@ -45,4 +45,49 @@ RSpec.describe Diary do
         expect(my_diary.count_words).to eq 6
       end
     end
+    
+    describe "#count_words in both classes, #add (Diary), #reading_time (Diary)" do
+      it "fails if reading speed (wpm) is below 1" do
+        diary_entry1 = DiaryEntry.new("entry_one", "one")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        expect {my_diary.reading_time(0) }.to raise_error "Reading speed is too low."
+      end
+
+      it "returns 0 if no entries are added" do
+        my_diary = Diary.new
+        expect(my_diary.reading_time(1)).to eq 0
+      end
+
+      it "returns 0 if all entries are empty" do
+        diary_entry1 = DiaryEntry.new("entry_one", "")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        expect(my_diary.reading_time(1)).to eq 0
+      end
+
+      it "returns the estimated reading time of one given entry" do
+        diary_entry1 = DiaryEntry.new("entry_one", "one")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        expect(my_diary.reading_time(1)).to eq 1
+      end
+
+      it "returns the estimated reading time ceiled of one given entry" do
+        diary_entry1 = DiaryEntry.new("entry_one", "one two three")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        expect(my_diary.reading_time(2)).to eq 2
+      end
+
+      it "returns the estimated reading time ceiled when given several entries" do
+        diary_entry1 = DiaryEntry.new("entry_one", "one two three")
+        diary_entry2 = DiaryEntry.new("entry_two", "four five six")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        my_diary.add(diary_entry2)
+        expect(my_diary.reading_time(2)).to eq 3
+      end
+    end
+
 end

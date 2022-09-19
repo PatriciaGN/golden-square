@@ -27,6 +27,11 @@ class Diary
                           # the number of words the user can read per minute
       # Returns an integer representing an estimate of the reading time in minutes
       # if the user were to read all entries in the diary.
+      fail "Reading speed is too low." if wpm < 1
+     (self.count_words / wpm.to_f).ceil
+    #   total_reading_time = 0
+    #   @all_entries.each { |entry| total_reading_time += (entry.count_words / wpm.to_f).ceil }
+    #   return total_reading_time
     end
   
     def find_best_entry_for_reading_time(wpm, minutes)
