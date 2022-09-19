@@ -1,19 +1,16 @@
-class Todo
-    def initialize(task) # task is a string
-      # ...
+require_relative "../lib/todo_class.rb"
+
+RSpec.describe "Todo" do
+    describe "#initialize" do
+        it "constructs an empty array and stores it in the variable @tasks" do
+            my_todo = Todo.new("Wash up")
+        end
     end
-  
-    def task
-      # Returns the task as a string
+
+    describe "#task" do
+      it "returns an empty string if todo is empty" do
+        my_todo = Todo.new("")
+        expect(my_todo.task).to eq ""
+      end
     end
-  
-    def mark_done!
-      # Marks the todo as done
-      # Returns nothing
-    end
-  
-    def done?
-      # Returns true if the task is done
-      # Otherwise, false
-    end
-  end
+end
