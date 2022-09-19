@@ -6,7 +6,7 @@ class Diary
   
     def add(entry) # entry is an instance of DiaryEntry
       # Returns nothing
-      @all_entries << [entry.title, entry.contents]
+      @all_entries << entry
     end
   
     def all
