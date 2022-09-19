@@ -19,4 +19,30 @@ RSpec.describe Diary do
           expect(my_diary.all).to eq [ new_entry1, new_entry2]
         end
     end
+    
+    describe "#add and #count_words in both classes" do
+      it "Returns zero when no diary entries" do
+        my_diary = Diary.new
+        expect(my_diary.count_words).to eq 0
+      end
+
+      it "Returns the number of words in one diary entry" do
+        diary_entry1 = DiaryEntry.new("entry_one", "my contents")
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        diary_entry1.count_words
+        expect(my_diary.count_words).to eq 2
+      end
+
+      it "Returns the number of words in several diary entries" do
+        diary_entry1 = DiaryEntry.new("entry_one", "my contents one")
+        diary_entry2 = DiaryEntry.new("entry_two", "my contents two")
+        diary_entry1.count_words
+        diary_entry2.count_words
+        my_diary = Diary.new
+        my_diary.add(diary_entry1)
+        my_diary.add(diary_entry2)
+        expect(my_diary.count_words).to eq 6
+      end
+    end
 end
