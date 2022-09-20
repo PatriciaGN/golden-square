@@ -1,4 +1,4 @@
-require "diaryentry_class.rb"
+#require "diaryentry_class.rb"
 
 class Diary
     def initialize
