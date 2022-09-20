@@ -25,5 +25,6 @@ class TodoList
   
     def give_up!
       # Marks all todos as complete
+      @tasks.map { |task| task.completed = true }
     end
   end
