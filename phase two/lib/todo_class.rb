@@ -1,7 +1,11 @@
+require "todo_class.rb"
+
 class Todo
+  attr_accessor :task, :completed
+
     def initialize(task) # task is a string
       @task = task
-      @tasks_done = []
+      @completed = false
     end
   
     def task
@@ -9,8 +13,10 @@ class Todo
     end
   
     def mark_done!
-      # Marks the todo as done
-      # Returns nothing
+      fail "That todo was already marked as done" if self.completed == true
+      # @tasks_not_done -= @task
+      # @tasks_done << @task
+      self.completed = true
     end
   
     def done?

@@ -13,4 +13,12 @@ RSpec.describe "Todo" do
         expect(my_todo.task).to eq ""
       end
     end
+
+    describe "#mark_done!" do
+      it "returns an error if a todo was already done" do
+        my_todo = Todo.new("Wash up")
+        my_todo.mark_done!
+        expect { my_todo.mark_done! }.to raise_error "That todo was already marked as done"
+      end
+    end
 end
