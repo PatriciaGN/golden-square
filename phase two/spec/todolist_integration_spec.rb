@@ -44,6 +44,16 @@
         expect(my_list.complete).to eq [my_todo]
       end
 
+      it "when marked a task as complete, it doesn't appear on the incomplete list" do
+        my_list = TodoList.new
+        my_todo1 = Todo.new("Wash up")
+        my_todo2 = Todo.new("Pet the cat")
+        my_list.add(my_todo1)
+        my_list.add(my_todo2)
+        my_todo1.mark_done!
+        expect(my_list.incomplete).to eq [my_todo2]
+      end
+
       it "marks several todos as done and returns the list" do
         my_list = TodoList.new
         my_todo1 = Todo.new("Wash up")
