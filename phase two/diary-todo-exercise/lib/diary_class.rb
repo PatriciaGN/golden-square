@@ -30,7 +30,7 @@ class Diary
         readable_entries << entry if entry.count_words <= readable_words
       end
       fail "No suitable entries for the time given" if readable_entries.empty?
-      readable_entries.max_by(&:count_words)
+      dable_entries.max_by(&:count_words)
     end
 
     def phone_list
