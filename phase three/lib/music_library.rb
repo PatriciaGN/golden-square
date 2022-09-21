@@ -1,3 +1,5 @@
+require "track.rb"
+
 class MusicLibrary
     def initialize
       @tracks_list = []

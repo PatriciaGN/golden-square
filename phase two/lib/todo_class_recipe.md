@@ -36,32 +36,10 @@ it returns the task
  my_todo.task #=> "Wash up"
 
 * mark_done! 
-returns an error if a todo was already done
- my_todo = Todo.new("Wash up")
- my_todo.mark_done!
- my_todo.mark_done! #=> "That todo was already marked as done"
-
-it marks a todo as done
- my_todo = Todo.new("Wash up")
- my_todo.mark_done!
-   #=> @done_tasks = ["Wash up"]
+In integration spec
 
  * done?
- returns true if task has been done
-  my_todo = Todo.new("Wash up")
-  my_todo.mark_done!
-  my_todo.done? #=> true
-
- returns false if task hasn't been done
-  my_todo = Todo.new("Wash up")
-  my_todo.done? #=> true
-
-
-
-
-
-
-
+In integration spec
 
 
 4. Implement the Behaviour
