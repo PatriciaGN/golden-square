@@ -25,14 +25,12 @@ class Diary
 
     def best_entry_for_given_time(wpm, min)
       readable_words = wpm * min
-      readable_entries = false
+      readable_entries = []
       @all_entries.each do |entry|
-        if entry.count_words <= readable_words
-            return entry
-            readable_entries = true
-        end
+        readable_entries << entry if entry.count_words <= readable_words
       end
-      fail "No suitable entries for the time given" if readable_entries == false
+      fail "No suitable entries for the time given" if readable_entries.empty?
+      readable_entries.max_by(&:count_words)
     end
 
     def phone_list

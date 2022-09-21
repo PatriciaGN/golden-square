@@ -74,13 +74,15 @@ describe "Diary - Todo integration" do
             expect(my_diary.best_entry_for_given_time(1, 3)).to eq entry1
         end
 
-        it "returns an entry the user can read in the given time when several entries stored" do
+        it "returns the longest entry the user can read in the given time when several entries stored" do
             my_diary = Diary.new
             entry1 = DiaryEntry.new("Monday", "one two three four")
-            entry2 = DiaryEntry.new("Tuesday", "five four six")
+            entry2 = DiaryEntry.new("Tuesday", "five four")
+            entry3 = DiaryEntry.new("Wednesday", "five six seven")
             my_diary.add_entry(entry1)
             my_diary.add_entry(entry2)
-            expect(my_diary.best_entry_for_given_time(1, 3)).to eq entry2
+            my_diary.add_entry(entry3)
+            expect(my_diary.best_entry_for_given_time(1, 3)).to eq entry3
         end
     end
 
