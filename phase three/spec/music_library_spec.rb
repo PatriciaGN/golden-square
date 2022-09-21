@@ -43,11 +43,11 @@ describe MusicLibrary do
 
     it "returns a track that is matched" do
       library = MusicLibrary.new
-      track_1 = double :track, matches?: true
-      track_2 = double :track, matches?: true
-      Track_1 = double :track
+      # track_1 = double :track, matches?: true
+      # track_2 = double :track, matches?: true
+      track_1 = double :track
       expect(track_1).to receive(:matches?).with("The").and_return(true)
-      Track_2 = double :track
+      track_2 = double :track
       expect(track_2).to receive(:matches?).with("The").and_return(false)
       library.add(track_1)
       library.add(track_2)
