@@ -1,6 +1,26 @@
+# require 'date'
+# require 'json'
+# require 'net/http'
+
+# class TimeError
+#   # Returns difference in seconds between server time
+#   # and the time on this computer
+#   def error
+#     return get_server_time - Time.now
+#   end
+
+#   private
+
+#   def get_server_time
+#     text_response = Net::HTTP.get(URI("https://worldtimeapi.org/api/ip"))
+#     json = JSON.parse(text_response)
+#     return DateTime.parse(json["utc_datetime"]).to_time
+#   end
+# end
+
+
 require 'date'
 require 'json'
-#require 'net/http'
 
 class TimeError
   # Returns difference in seconds between server time
@@ -16,7 +36,12 @@ class TimeError
 
   def get_server_time
     text_response = @requester.get(URI("https://worldtimeapi.org/api/ip"))
-    json = JSON.parse(text_response)
+    json = JSON.parse(text_response) 
     return DateTime.parse(json["utc_datetime"]).to_time
   end
 end
+
+# For real life usage (not with tests) we would need to add:
+# require 'net/http'
+# time_error = TimeError.new(Net::HTTP)
+# p time_error.error(Time.now)
