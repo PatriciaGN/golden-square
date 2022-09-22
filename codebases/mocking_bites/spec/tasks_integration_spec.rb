@@ -26,10 +26,7 @@ RSpec.describe "tasks integration" do
   it "formats a list of tasks" do
     task_list = TaskList.new
     task_1 = Task.new("Walk the dog")
-    task_2 = Task.new("Walk the cat")
-    task_list.add(task_1)
-    task_list.add(task_2)
-    task_1.mark_complete
-    expect(task_list.all).to eq " - [x] Walk the dog \n -[ ] Walk the cat"
+    task_1_format = TaskFormatter.new(task_1)
+    expect(task_1_format.format).to eq "- [ ] Walk the dog"
   end
 end
